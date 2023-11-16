@@ -1,0 +1,10 @@
+button.btn-all{
+    background-color: green;
+    color: #fff;
+    border: 1px solid yellowgreen;
+    border-radius: 1.5rem;
+    padding: 1rem;
+}
+.starwars-1{
+    text-align: center;
+}
