@@ -1,5 +1,4 @@
-const data = `{
-    "characters": [
+let characters = `[
       {
         "id": 1,
         "name": "Luke Skywalker",
@@ -119,9 +118,37 @@ const data = `{
         "pic": "https://vignette.wikia.nocookie.net/starwars/images/d/d8/Emperor_Sidious.png",
         "homeworld": "naboo"
       }
-    ]
-  }
-  `
-const dataJson = JSON.parse(data);
+    ]`
+  
+const charactersJson = JSON.parse(characters);
 
-console.log(dataJson);
+console.log(charactersJson);
+
+let row=document.querySelector(".row")
+charactersJson.forEach(function (item, index){
+row.innerHTML+=
+`<div class="col-lg-4">
+<div class="card">
+  <img src="${item.pic}" class="card-img-top" alt=${item.id}>
+  <div class="card-body">
+    <h5 class="card-title">${item.name}</h5>
+    <p class="card-text">${item.homeworld}</p>
+  </div>
+</div></div>`
+});
+
+
+let btn=document.createElement("button");
+            
+btn.setAttribute("id","btn1");
+btn.setAttribute("name","btn1");
+btn.innerText="Karakterleri Göster";
+
+btn.style.cssText="color:white; background:green; font-size:16px; padding:8px;"; 
+
+btn.onclick=function(){
+    window.alert("HOŞGELDİNİZ");
+}
+
+let panelDiv=document.getElementById("panel");
+panelDiv.appendChild(btn);
