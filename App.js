@@ -135,20 +135,31 @@ row.innerHTML+=
     <p class="card-text">${item.homeworld}</p>
   </div>
 </div></div>`
+row.remove();
 });
 
 
 let btn=document.createElement("button");
-            
+let panelDiv=document.getElementById("panel");
+panelDiv.appendChild(btn);
 btn.setAttribute("id","btn1");
 btn.setAttribute("name","btn1");
 btn.innerText="Karakterleri Göster";
+btn.style.cssText="color:white; background:green; font-size:16px; padding:8px; border-radius:1.5rem;"; 
 
-btn.style.cssText="color:white; background:green; font-size:16px; padding:8px;"; 
+let isHidden = true;
 
 btn.onclick=function(){
-    window.alert("HOŞGELDİNİZ");
+if(isHidden){
+  isHidden=false
+  document.getElementsByClassName("container")[0].appendChild(row);
+  btn.style.backgroundColor="red"
+  btn.textContent="Karakterleri Gizle"
 }
-
-let panelDiv=document.getElementById("panel");
-panelDiv.appendChild(btn);
+else{
+  isHidden=true;
+  btn.textContent="Karakterleri Göster";
+  btn.style.backgroundColor="green";
+  row.remove();
+}
+}
