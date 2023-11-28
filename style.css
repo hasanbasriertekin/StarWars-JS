@@ -1,11 +1,18 @@
-img{
-    width: 300px;
-    height: 400px;
-    object-fit: cover;
-    object-position: top;
+body {
+  background-image: url(image/starwars.jpg);
+}
+img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  object-position: top;
 }
 
-#panel{
+#panel {
+  text-align: center;
+  margin-top: 2rem;
+}
+#filter-btn{
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }

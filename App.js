@@ -98,7 +98,7 @@ let characters = `[
       {
         "id": 18,
         "name": "Wedge Antilles",
-        "pic": "https://vignette.wikia.nocookie.net/starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg",
+        "pic": "https://vignette.wikia.nocookie.net/es.starwars/images/6/60/WedgeHelmetless-ROTJHD.jpg/revision/latest?cb=20160716165228",
         "homeworld": "corellia"
       },
       {
@@ -121,18 +121,17 @@ let characters = `[
     ]`
   
 const charactersJson = JSON.parse(characters);
-
 console.log(charactersJson);
 
 let row=document.querySelector(".row")
 charactersJson.forEach(function (item, index){
 row.innerHTML+=
-`<div class="col-lg-4">
-<div class="card">
-  <img src="${item.pic}" class="card-img-top" alt=${item.id}>
-  <div class="card-body">
-    <h5 class="card-title">${item.name}</h5>
-    <p class="card-text">${item.homeworld}</p>
+`<div class="col-lg-3">
+<div class="card mt-5">
+  <img src="${item.pic}" class="card-img-top bg-black" alt=${item.id}>
+  <div class="card-body bg-black">
+    <h5 class="card-title text-white">${item.name}</h5>
+    <p class="card-text text-white">${item.homeworld}</p>
   </div>
 </div></div>`
 row.remove();
@@ -142,24 +141,36 @@ row.remove();
 let btn=document.createElement("button");
 let panelDiv=document.getElementById("panel");
 panelDiv.appendChild(btn);
-btn.setAttribute("id","btn1");
-btn.setAttribute("name","btn1");
-btn.innerText="Karakterleri Göster";
+btn.textContent="Karakterleri Göster";
 btn.style.cssText="color:white; background:green; font-size:16px; padding:8px; border-radius:1.5rem;"; 
 
-let isHidden = true;
+let hasan = true;
 
 btn.onclick=function(){
-if(isHidden){
-  isHidden=false
+if(hasan){
+  hasan=false
   document.getElementsByClassName("container")[0].appendChild(row);
   btn.style.backgroundColor="red"
-  btn.textContent="Karakterleri Gizle"
+  btn.textContent="Karakterleri Kapat"
 }
 else{
-  isHidden=true;
+  hasan=true;
   btn.textContent="Karakterleri Göster";
   btn.style.backgroundColor="green";
   row.remove();
 }
 }
+
+const homeworldsRaw = charactersJson.map(character => character.homeworld);
+const homeworldsCleaned = homeworldsRaw.map(homeworld => homeworld ?? 'other');
+const homeworldsLowercase = homeworldsCleaned.map(homeworld => homeworld.toLowerCase());
+const homeworldsUnique = [...new Set(homeworldsLowercase)];
+console.log(homeworldsUnique);
+
+
+let filter=document.createElement("button");
+let btn1=document.getElementById("filter-btn");
+btn1.appendChild(filter);
+filter.textContent="Filtrele";
+filter.style.cssText="color:black; background:yellow; font-size:16px; padding:8px; width:8rem; border-radius:1.5rem;"; 
+
