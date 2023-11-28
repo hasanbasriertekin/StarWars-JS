@@ -1,5 +1,5 @@
 body {
-  background-image: url(image/starwars.jpg);
+  background-image: url(image/17503.jpg);
 }
 img {
   width: 300px;
@@ -9,10 +9,14 @@ img {
 }
 
 #panel {
-  text-align: center;
+  justify-content: center;
+  text-align:center;
   margin-top: 2rem;
+  display: inline-table;
+  font-weight:600;
 }
 #filter-btn{
-    text-align: center;
-    margin-top: 1rem;
+text-align: start;
+display: inline-table;
+font-weight:600;
 }

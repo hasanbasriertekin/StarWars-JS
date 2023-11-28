@@ -168,9 +168,39 @@ const homeworldsUnique = [...new Set(homeworldsLowercase)];
 console.log(homeworldsUnique);
 
 
+let filterButon = document.querySelector(".filter");
+let radioButtonHTML = '';
+
+homeworldsUnique.forEach(function (homeworld, index) {
+  radioButtonHTML += `
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="homeworld-${index}">
+      <label class="form-check-label text-white" for="homeworld-${index}">${homeworld}</label>
+    </div>`;
+   filterButon.remove()
+});
+filterButon.innerHTML = radioButtonHTML;
+
 let filter=document.createElement("button");
 let btn1=document.getElementById("filter-btn");
 btn1.appendChild(filter);
 filter.textContent="Filtrele";
 filter.style.cssText="color:black; background:yellow; font-size:16px; padding:8px; width:8rem; border-radius:1.5rem;"; 
 
+
+let basri = true;
+
+filter.onclick=function(){
+if(basri){
+  basri=false
+  document.getElementById("filter-btn").appendChild(filterButon);
+  filter.style.backgroundColor="yellow"
+  filter.textContent="Filtrele"
+}
+else{
+  basri=true;
+  filter.textContent="Filtrele";
+  filter.style.backgroundColor="yellow";
+  filterButon.remove();
+}
+}
