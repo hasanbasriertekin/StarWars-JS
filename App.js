@@ -126,7 +126,7 @@ console.log(charactersJson);
 let row=document.querySelector(".row")
 charactersJson.forEach(function (item, index){
 row.innerHTML+=
-`<div class="col-lg-3">
+`<div class="col-lg-3" data-id="${item.homeworld}">
 <div class="card mt-5">
   <img src="${item.pic}" class="card-img-top bg-black" alt=${item.id}>
   <div class="card-body bg-black">
@@ -174,8 +174,8 @@ let radioButtonHTML = '';
 homeworldsUnique.forEach(function (homeworld, index) {
   radioButtonHTML += `
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="homeworld-${index}">
-      <label class="form-check-label text-white" for="homeworld-${index}">${homeworld}</label>
+      <input class="form-check-input" type="radio" name="homeworld" value="${homeworld}" id="${homeworld}">
+      <label class="form-check-label text-white" for="${homeworld}">${homeworld}</label>
     </div>`;
    filterButon.remove()
 });
@@ -196,6 +196,18 @@ if(basri){
   document.getElementById("filter-btn").appendChild(filterButon);
   filter.style.backgroundColor="yellow"
   filter.textContent="Filtrele"
+  document.querySelectorAll("input").forEach(function(item,index){
+    item.onclick=function(){
+      document.querySelectorAll(".col-lg-3").forEach(function (item2) {
+        if(item2.getAttribute("data-id")==item.value){
+          item2.style.display="block"
+        }
+        else{
+          item2.style.display="none"
+        }
+      })
+    }
+  })
 }
 else{
   basri=true;
@@ -204,3 +216,7 @@ else{
   filterButon.remove();
 }
 }
+
+
+
+
