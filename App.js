@@ -122,13 +122,13 @@ let characters = `[
   
 const charactersJson = JSON.parse(characters);
 console.log(charactersJson);
-
+const image=document.querySelector("#image")
 let row=document.querySelector(".row")
 charactersJson.forEach(function (item, index){
 row.innerHTML+=
 `<div class="col-lg-3" data-id="${item.homeworld}">
 <div class="card mt-5">
-  <img src="${item.pic}" class="card-img-top bg-black" alt=${item.id}>
+  <img src="${item.pic}" class="image card-img-top bg-black" alt=${item.id}>
   <div class="card-body bg-black">
     <h5 class="card-title text-white">${item.name}</h5>
     <p class="card-text text-white">${item.homeworld}</p>
@@ -152,12 +152,14 @@ if(hasan){
   document.getElementsByClassName("container")[0].appendChild(row);
   btn.style.backgroundColor="red"
   btn.textContent="Karakterleri Kapat"
+  image.style.display="none"
 }
 else{
   hasan=true;
   btn.textContent="Karakterleri Göster";
   btn.style.backgroundColor="green";
   row.remove();
+  image.style.display="block"
 }
 }
 
